@@ -34,8 +34,8 @@ export default function HomePage() {
             address: {
               "@type": "PostalAddress",
               streetAddress:
-                "Neorama İş Merkezi, Beştepe Mah. Yaşam Cd, Adalet Sokağı No:4/B",
-              addressLocality: "Çankaya",
+                "Neorama İş Merkezi, Beştepe Mah., Yaşam Cd., Adalet Sok. No:4/B",
+              addressLocality: "Yenimahalle",
               addressRegion: "Ankara",
               postalCode: "06510",
               addressCountry: "TR",

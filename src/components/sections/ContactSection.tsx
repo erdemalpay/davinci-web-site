@@ -323,7 +323,7 @@ export default function ContactSection() {
                 fontStyle: "italic",
               }}
             >
-              {t("Neorama Business Center, Beştepe Mah. Yaşam Cd, Adalet Street No:4/B, 06510 Çankaya/Ankara")}
+              {t("Neorama Business Center, Beştepe Mah., Yaşam Cd., Adalet Sk. No:4/B, 06510 Yenimahalle, Ankara")}
             </p>
           </motion.div>
 

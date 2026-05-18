@@ -73,7 +73,7 @@ export default function LocationSection() {
               {/* Address */}
               <InfoCard
                 icon={<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s-8-6-8-13A8 8 0 0120 9c0 7-8 13-8 13z"/><circle cx="12" cy="9" r="3"/></svg>}
-                label={t('Neorama Business Center, Beştepe Mah. Yaşam Cd, Adalet Street No:4/B, 06510 Çankaya/Ankara')}
+                label={t('Neorama Business Center, Beştepe Mah., Yaşam Cd., Adalet Sk. No:4/B, 06510 Yenimahalle, Ankara')}
               />
 
               {/* Hours */}
