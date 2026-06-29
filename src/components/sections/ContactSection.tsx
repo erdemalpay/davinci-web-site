@@ -58,10 +58,10 @@ export default function ContactSection() {
 
   const SOCIALS = [
     {
-      href: "https://www.instagram.com/davinciboardgamecafe",
+      href: "https://www.instagram.com/davinciboardgame",
       icon: <InstagramIcon />,
       label: "Instagram",
-      handle: "@davinciboardgamecafe",
+      handle: "@davinciboardgame",
     },
     {
       href: "https://chat.whatsapp.com/DSjIZmUFqXgB7Hkr6IRDGf",
