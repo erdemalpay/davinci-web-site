@@ -15,32 +15,32 @@ type FeaturePhoto = {
 
 const PHOTOS: FeaturePhoto[] = [
   {
-    src: "/features/Screenshot%202026-04-22%20at%2010.45.33.png",
+    src: "/features/oyun-kutuphanesi.webp",
     featureIdx: 0,
     rotate: -2.5,
     area: "lib",
   },
   {
-    src: "/images/masa-1.jpeg",
+    src: "/images/oyun-masasi.webp",
     featureIdx: 1,
     rotate: -2.2,
     area: "game",
   },
   {
-    src: "/features/Screenshot%202026-04-22%20at%2010.38.42.png",
+    src: "/features/rahat-salon.webp",
     featureIdx: 2,
     rotate: 3.2,
     area: "salon",
   },
   {
-    src: "/images/tatli-oyun.jpeg",
+    src: "/images/tatli-ve-kutu-oyunu.webp",
     featureIdx: 3,
     rotate: -1.9,
     area: "menu",
     aspectRatio: "4 / 3",
   },
   {
-    src: "/features/Screenshot%202026-04-22%20at%2010.42.09.png",
+    src: "/features/etkinlik-turnuva.webp",
     featureIdx: 4,
     rotate: -2.8,
     area: "event",
@@ -198,7 +198,7 @@ export default function SlideFeatures() {
   return (
     <div style={{ position: "relative", height: "100vh", minHeight: "600px" }}>
       <img
-        src="/images/IMG_0477-1.jpg"
+        src="/images/davinci-cafe-oyun-alani.webp"
         alt=""
         style={{
           position: "absolute",

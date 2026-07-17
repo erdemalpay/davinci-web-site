@@ -28,31 +28,39 @@ export default function SlideHero({ monthlyImageUrl, onMonthlyImageClick }: Slid
   const isMobile = useIsMobile()
 
   const heading = (
-    <div style={{
+    <h1 style={{
       fontFamily: HERO_ROW_FONT_FAMILY, fontSize: isMobile ? '3.6rem' : 'clamp(2.8rem, 6.5vw, 5.5rem)',
       fontWeight: 900, fontStyle: HERO_ROW_FONT_STYLE, lineHeight: 0.78, color: '#fff', letterSpacing: '-0.02em',
-      marginBottom: isMobile ? '16px' : '24px',
+      margin: 0, marginBottom: isMobile ? '16px' : '24px',
     }}>
-      {HERO_ROWS.map(({ text, chars }) => (
-        <div key={text}>
-          {chars.map(({ char, key, delay, isLast }) => (
-            <motion.span
-              key={key}
-              initial={{ opacity: 0, y: 28 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.45, delay, ease: 'easeOut' }}
-              style={{
-                display: 'inline-block',
-                width: char === ' ' ? '0.42em' : undefined,
-                marginRight: isLast || char === ' ' ? '0' : '-0.14em',
-              }}
-            >
-              {char === ' ' ? '\u00A0' : char}
-            </motion.span>
-          ))}
-        </div>
-      ))}
-    </div>
+      <span style={{
+        position: 'absolute', width: '1px', height: '1px', padding: 0, margin: '-1px',
+        overflow: 'hidden', clip: 'rect(0, 0, 0, 0)', whiteSpace: 'nowrap', border: 0,
+      }}>
+        Da Vinci Board Game Cafe
+      </span>
+      <span aria-hidden="true">
+        {HERO_ROWS.map(({ text, chars }) => (
+          <span key={text} style={{ display: 'block' }}>
+            {chars.map(({ char, key, delay, isLast }) => (
+              <motion.span
+                key={key}
+                initial={{ opacity: 0, y: 28 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.45, delay, ease: 'easeOut' }}
+                style={{
+                  display: 'inline-block',
+                  width: char === ' ' ? '0.42em' : undefined,
+                  marginRight: isLast || char === ' ' ? '0' : '-0.14em',
+                }}
+              >
+                {char === ' ' ? '\u00A0' : char}
+              </motion.span>
+            ))}
+          </span>
+        ))}
+      </span>
+    </h1>
   )
 
   const paragraph = (
@@ -144,7 +152,7 @@ export default function SlideHero({ monthlyImageUrl, onMonthlyImageClick }: Slid
   return (
     <div style={{ position: 'relative', height: '100vh', minHeight: '600px' }}>
       <img
-        src="/images/6d8c8b52-cd9f-46fd-94ed-9a88e0df5808.jpg"
+        src="/images/davinci-board-game-cafe.webp"
         alt="Da Vinci Board Game Cafe"
         style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }}
       />

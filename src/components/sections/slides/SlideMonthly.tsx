@@ -12,7 +12,7 @@ export default function SlideMonthly({ monthlyImageUrl, onImageClick }: SlideMon
   return (
     <div style={{ position: 'relative', height: '100vh', minHeight: '600px' }}>
       <img
-        src="/images/6d8c8b52-cd9f-46fd-94ed-9a88e0df5808.jpg"
+        src="/images/davinci-board-game-cafe.webp"
         alt=""
         style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }}
       />

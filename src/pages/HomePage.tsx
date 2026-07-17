@@ -19,10 +19,22 @@ export default function HomePage() {
         <meta property="og:title" content="Da Vinci Board Game Cafe" />
         <meta property="og:description" content={t("With hundreds of board games and our experienced team, we welcome you to a fun-filled experience..")} />
         <meta
+          property="og:image"
+          content="https://davinciboardgame.com/images/davinci-logo.png"
+        />
+        <meta property="og:url" content="https://davinciboardgame.com/" />
+        <meta
           property="og:locale"
           content={i18n.language === "tr" ? "tr_TR" : "en_US"}
         />
-        <link rel="canonical" href="https://davinciboardgame.com" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Da Vinci Board Game Cafe" />
+        <meta name="twitter:description" content={t("With hundreds of board games and our experienced team, we welcome you to a fun-filled experience..")} />
+        <meta
+          name="twitter:image"
+          content="https://davinciboardgame.com/images/davinci-logo.png"
+        />
+        <link rel="canonical" href="https://davinciboardgame.com/" />
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",

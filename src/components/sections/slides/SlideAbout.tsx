@@ -20,7 +20,7 @@ export default function SlideAbout() {
   return (
     <div style={{ position: "relative", height: "100vh", minHeight: "600px" }}>
       <img
-        src="/images/IMG_0478-1.jpg"
+        src="/images/davinci-cafe-ic-mekan.webp"
         alt=""
         style={{
           position: "absolute",
@@ -151,7 +151,7 @@ export default function SlideAbout() {
                     }}
                   >
                     <img
-                      src="/images/kutuphane.JPG.jpeg"
+                      src="/images/kutu-oyunu-kutuphanesi.webp"
                       alt=""
                       aria-hidden="true"
                       style={{
@@ -175,7 +175,7 @@ export default function SlideAbout() {
                       }}
                     />
                     <img
-                      src="/images/kutuphane.JPG.jpeg"
+                      src="/images/kutu-oyunu-kutuphanesi.webp"
                       alt="Da Vinci Board Game Cafe"
                       style={{
                         position: "relative",
