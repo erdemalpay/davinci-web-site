@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
 import { useIsMobile } from '../../../hooks/useIsMobile'
 import PolaroidFrame from '../../ui/PolaroidFrame'
+import HeroMeepleo from '../HeroMeepleo'
 
 const HERO_ROWS = (() => {
   let idx = 0
@@ -29,7 +30,7 @@ export default function SlideHero({ monthlyImageUrl, onMonthlyImageClick }: Slid
 
   const heading = (
     <h1 style={{
-      fontFamily: HERO_ROW_FONT_FAMILY, fontSize: isMobile ? '3.6rem' : 'clamp(2.8rem, 6.5vw, 5.5rem)',
+      fontFamily: HERO_ROW_FONT_FAMILY, fontSize: isMobile ? '3.6rem' : 'clamp(2.4rem, min(6.5vw, 7.5vh), 5.5rem)',
       fontWeight: 900, fontStyle: HERO_ROW_FONT_STYLE, lineHeight: 0.78, color: '#fff', letterSpacing: '-0.02em',
       margin: 0, marginBottom: isMobile ? '16px' : '24px',
     }}>
@@ -143,7 +144,7 @@ export default function SlideHero({ monthlyImageUrl, onMonthlyImageClick }: Slid
         <img
           src={monthlyImageUrl}
           alt="monthly activity"
-          style={{ width: isMobile ? '100%' : 'auto', height: 'auto', maxWidth: isMobile ? undefined : '460px', maxHeight: isMobile ? undefined : '540px', display: 'block' }}
+          style={{ width: isMobile ? '100%' : 'auto', height: 'auto', maxWidth: isMobile ? undefined : 'min(400px, 27vw)', maxHeight: isMobile ? undefined : 'min(540px, 62vh)', display: 'block' }}
         />
       </div>
     </PolaroidFrame>
@@ -169,14 +170,20 @@ export default function SlideHero({ monthlyImageUrl, onMonthlyImageClick }: Slid
       {!isMobile && (
         <div style={{
           position: 'absolute', inset: 0, zIndex: 10,
-          display: 'flex', alignItems: 'center', padding: '0 24px', paddingTop: '80px',
+          display: 'flex', padding: '0 24px',
           pointerEvents: 'none',
         }}>
-          <div className="container-xl" style={{ width: '100%', pointerEvents: 'auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '40px' }}>
-            <div style={{ flex: '1 1 0', minWidth: 0 }}>
-              {heading}
-              {paragraph}
-              {buttons}
+          <div className="container-xl" style={{ width: '100%', height: '100%', pointerEvents: 'auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '40px' }}>
+            <div style={{ flex: '1 1 0', minWidth: 0, height: '100%', display: 'flex', flexDirection: 'column' }}>
+              <div style={{ flex: '1 1 auto', display: 'flex', flexDirection: 'column', justifyContent: 'center', paddingTop: '90px' }}>
+                {heading}
+                {paragraph}
+                {buttons}
+              </div>
+              <HeroMeepleo
+                compact={false}
+                onEventsClick={monthlyImageUrl ? onMonthlyImageClick : undefined}
+              />
             </div>
             {monthlyFrame}
           </div>
@@ -193,28 +200,10 @@ export default function SlideHero({ monthlyImageUrl, onMonthlyImageClick }: Slid
             {heading}
             {paragraph}
             {buttons}
-            {monthlyImageUrl && (
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 1.05 }}
-                style={{ marginTop: '12px' }}
-              >
-                <motion.button
-                  onClick={onMonthlyImageClick}
-                  whileTap={{ scale: 0.97 }}
-                  style={{
-                    display: 'inline-flex', alignItems: 'center', gap: '8px',
-                    background: 'transparent', color: 'rgba(255,255,255,0.75)',
-                    padding: '12px 0', border: 'none', cursor: 'pointer',
-                    fontSize: '0.9rem', fontWeight: 600, fontFamily: 'var(--font-body)',
-                    textDecoration: 'underline', textUnderlineOffset: '4px',
-                  }}
-                >
-                  {t('Ayın Etkinlikleri')} →
-                </motion.button>
-              </motion.div>
-            )}
+            <HeroMeepleo
+              compact
+              onEventsClick={monthlyImageUrl ? onMonthlyImageClick : undefined}
+            />
           </div>
         </div>
       )}
