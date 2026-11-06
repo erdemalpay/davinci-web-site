@@ -79,53 +79,6 @@ export default function SlideHero({ monthlyImageUrl, onMonthlyImageClick }: Slid
     </motion.p>
   )
 
-  const buttons = (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay: 0.9 }}
-      style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}
-    >
-      <motion.a
-        href="https://yervarmi.davinciboardgame.com"
-        target="_blank"
-        rel="noopener noreferrer"
-        whileHover={{ scale: 1.04, boxShadow: '0 12px 40px rgba(230,57,70,0.45)' }}
-        whileTap={{ scale: 0.97 }}
-        style={{
-          display: 'inline-flex', alignItems: 'center', gap: '8px',
-          background: 'var(--red)', color: '#fff',
-          padding: isMobile ? '12px 22px' : '16px 32px',
-          borderRadius: '100px', fontWeight: 700, fontSize: '0.95rem',
-          letterSpacing: '0.02em', fontFamily: 'var(--font-body)',
-        }}
-      >
-        {t('Make a Reservation')}
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-          <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-        </svg>
-      </motion.a>
-
-      <motion.a
-        href="https://buoyunvarmi.davinciboardgame.com"
-        target="_blank"
-        rel="noopener noreferrer"
-        whileHover={{ scale: 1.04, background: 'rgba(255,255,255,0.15)' }}
-        whileTap={{ scale: 0.97 }}
-        style={{
-          display: 'inline-flex', alignItems: 'center', gap: '8px',
-          background: 'rgba(255,255,255,0.08)', color: '#fff',
-          padding: isMobile ? '12px 22px' : '16px 32px',
-          borderRadius: '100px', fontWeight: 600, fontSize: '0.95rem',
-          border: '1px solid rgba(255,255,255,0.2)', backdropFilter: 'blur(8px)',
-          fontFamily: 'var(--font-body)',
-        }}
-      >
-        {t('Explore Games')}
-      </motion.a>
-    </motion.div>
-  )
-
   const monthlyFrame = monthlyImageUrl ? (
     <PolaroidFrame
       initial={{ opacity: 0, x: isMobile ? 0 : 40, rotate: isMobile ? 0 : 3 }}
@@ -178,7 +131,6 @@ export default function SlideHero({ monthlyImageUrl, onMonthlyImageClick }: Slid
               <div style={{ flex: '1 1 auto', display: 'flex', flexDirection: 'column', justifyContent: 'center', paddingTop: '90px' }}>
                 {heading}
                 {paragraph}
-                {buttons}
               </div>
               <HeroMeepleo
                 compact={false}
@@ -199,7 +151,6 @@ export default function SlideHero({ monthlyImageUrl, onMonthlyImageClick }: Slid
           <div>
             {heading}
             {paragraph}
-            {buttons}
             <HeroMeepleo
               compact
               onEventsClick={monthlyImageUrl ? onMonthlyImageClick : undefined}
