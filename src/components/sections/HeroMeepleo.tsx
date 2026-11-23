@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
 import type { ReactNode } from 'react'
+import { useEmbedLink } from '../ui/EmbedModal'
 
 const CREAM = '#FFF4DF'
 const INK = '#1F2937'
@@ -51,6 +52,7 @@ interface CardProps {
 }
 
 function Card({ icon, label, href, onClick, compact, children, wide }: CardProps) {
+  const embedLink = useEmbedLink()
   const style = {
     display: 'flex', flexDirection: 'column' as const, alignItems: 'center', justifyContent: 'center',
     gap: compact ? '4px' : '6px',
@@ -79,7 +81,7 @@ function Card({ icon, label, href, onClick, compact, children, wide }: CardProps
   const motionProps = { whileHover: { y: -4 }, whileTap: { scale: 0.96 } }
 
   return href ? (
-    <motion.a href={href} target="_blank" rel="noopener noreferrer" style={style} {...motionProps}>
+    <motion.a href={href} target="_blank" rel="noopener noreferrer" onClick={embedLink(href, label)} style={style} {...motionProps}>
       {content}
     </motion.a>
   ) : (
