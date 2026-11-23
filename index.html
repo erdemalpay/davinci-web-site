@@ -2,6 +2,15 @@
 <html lang="tr">
   <head>
     <meta charset="UTF-8" />
+    <script>
+      // Only the live site may be indexed; staging and preview builds are noindex.
+      if (!/^(www\.)?davinciboardgame\.com$/.test(location.hostname)) {
+        var robots = document.createElement('meta');
+        robots.name = 'robots';
+        robots.content = 'noindex, nofollow';
+        document.head.appendChild(robots);
+      }
+    </script>
     <link
       rel="icon"
       type="image/png"
