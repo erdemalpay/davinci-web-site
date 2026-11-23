@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
+import { useEmbedLink } from '../ui/EmbedModal'
 
 const NAV_LINKS = [
   { label: 'Is This Game at the Cafe?', href: 'https://buoyunvarmi.davinciboardgame.com', external: false },
@@ -14,6 +15,7 @@ export default function Header() {
   const { t, i18n } = useTranslation()
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const embedLink = useEmbedLink()
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60)
@@ -91,7 +93,10 @@ export default function Header() {
                   whiteSpace: 'nowrap',
                   fontFamily: 'var(--font-body)',
                 }}
-                onClick={() => setMenuOpen(false)}
+                onClick={(e) => {
+                  setMenuOpen(false)
+                  embedLink(href, t(label))(e)
+                }}
               >
                 {t(label)}
               </motion.a>
@@ -132,6 +137,7 @@ export default function Header() {
               href="https://yervarmi.davinciboardgame.com"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={embedLink('https://yervarmi.davinciboardgame.com', t('Is There Space at the Cafe?'))}
               whileHover={{ scale: 1.03, boxShadow: '0 8px 24px rgba(168,0,0,0.35)' }}
               whileTap={{ scale: 0.97 }}
               style={{
@@ -227,7 +233,10 @@ export default function Header() {
                   borderBottom: '1px solid rgba(0,0,0,0.06)',
                   fontFamily: 'var(--font-body)',
                 }}
-                onClick={() => setMenuOpen(false)}
+                onClick={(e) => {
+                  setMenuOpen(false)
+                  embedLink(href, t(label))(e)
+                }}
               >
                 {t(label)}
               </motion.a>
