@@ -8,6 +8,7 @@ const NAV_LINKS = [
   { label: 'Is There Space at the Cafe?', href: 'https://yervarmi.davinciboardgame.com', external: false },
   { label: 'Buy Games', href: 'https://kutuoyunual.com', external: false },
   { label: 'Menu', href: 'https://menu.davinciboardgame.com/2', external: false },
+  { label: 'Group Events', href: '#grup-etkinligi', external: false },
   { label: 'Contact', href: '#contact', external: false },
 ]
 
