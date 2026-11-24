@@ -3,7 +3,7 @@ import { useMutation, useQuery } from '@tanstack/react-query'
 const API_URL = import.meta.env.VITE_API_URL ?? ''
 
 export type HourAvailability = { hour: string; remaining: number; pending: number }
-export type DayAvailability = { date: string; open: string; close: string; hours: HourAvailability[] }
+export type DayAvailability = { date: string; open: string; close: string; lastStart?: string; hours: HourAvailability[] }
 export type Availability = { capacity: number; days: DayAvailability[] }
 
 export type GroupEventType = 'corporate' | 'birthday' | 'school_club' | 'tournament' | 'other'

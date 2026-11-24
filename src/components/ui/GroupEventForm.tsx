@@ -250,7 +250,7 @@ function TimeStep({
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
       <p style={{ margin: 0, color: 'var(--gray-700)', fontSize: '0.92rem' }}>
-        {t('We can host up to {{capacity}} people at the same time. Weekdays during opening hours, weekends between 10:00 and 14:00. Days without room for {{count}} people are greyed out.', { capacity: data?.capacity ?? 100, count })}
+        {t('We can host up to {{capacity}} people at the same time. On weekdays events can start between 12:00 and 22:00; on weekends they run between 10:00 and 14:00. Days without room for {{count}} people are greyed out.', { capacity: data?.capacity ?? 100, count })}
       </p>
 
       <div className="ge-days">
@@ -281,9 +281,9 @@ function TimeStep({
 
       {day && (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-          <strong style={{ color: 'var(--black)' }}>{t('Choose a start hour')} ({day.open} - {day.close})</strong>
+          <strong style={{ color: 'var(--black)' }}>{t('Choose a start hour')} ({day.open} - {day.lastStart ?? day.close})</strong>
           <div className="ge-hours">
-            {day.hours.map((h) => {
+            {day.hours.filter((h) => !day.lastStart || toMin(h.hour) <= toMin(day.lastStart)).map((h) => {
               const ok = h.remaining >= count
               const inRange = start && end && toMin(h.hour) >= toMin(start) && toMin(h.hour) < toMin(end)
               return (

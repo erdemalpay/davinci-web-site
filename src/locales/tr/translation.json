@@ -100,7 +100,7 @@
   "Thank you! We have received your application and sent a confirmation to {{email}}. Our team will review it and let you know by email. Your time is reserved once we approve it.": "Teşekkürler! Başvurunuzu aldık ve {{email}} adresine bir onay e-postası gönderdik. Ekibimiz başvurunuzu inceleyip size e-postayla dönüş yapacak. Seçtiğiniz saat, biz onayladığımızda kesinleşir.",
   "Those hours just filled up. Please choose another time.": "Bu saatler az önce doldu. Lütfen başka bir saat seçin.",
   "Tournament": "Turnuva",
-  "We can host up to {{capacity}} people at the same time. Weekdays during opening hours, weekends between 10:00 and 14:00. Days without room for {{count}} people are greyed out.": "Aynı anda en fazla {{capacity}} kişi ağırlayabiliyoruz. Hafta içi açık olduğumuz saatlerde, hafta sonu 10:00-14:00 arasında etkinlik yapılabilir. {{count}} kişilik yer olmayan günler soluk görünür.",
+  "We can host up to {{capacity}} people at the same time. On weekdays events can start between 12:00 and 22:00; on weekends they run between 10:00 and 14:00. Days without room for {{count}} people are greyed out.": "Aynı anda en fazla {{capacity}} kişi ağırlayabiliyoruz. Hafta içi etkinlikler 12:00 ile 22:00 arasında başlayabilir, hafta sonu 10:00-14:00 arasında yapılır. {{count}} kişilik yer olmayan günler soluk görünür.",
   "We need a corporate invoice": "Kurumsal fatura istiyoruz",
   "We would like a game master to teach games": "Oyunları anlatacak bir oyun anlatıcısı istiyoruz",
   "We would like food and drinks": "Yiyecek-içecek istiyoruz",
