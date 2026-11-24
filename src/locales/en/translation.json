@@ -100,7 +100,7 @@
   "Thank you! We have received your application and sent a confirmation to {{email}}. Our team will review it and let you know by email. Your time is reserved once we approve it.": "Thank you! We have received your application and sent a confirmation to {{email}}. Our team will review it and let you know by email. Your time is reserved once we approve it.",
   "Those hours just filled up. Please choose another time.": "Those hours just filled up. Please choose another time.",
   "Tournament": "Tournament",
-  "We can host up to {{capacity}} people at the same time. Weekdays during opening hours, weekends between 10:00 and 14:00. Days without room for {{count}} people are greyed out.": "We can host up to {{capacity}} people at the same time. Weekdays during opening hours, weekends between 10:00 and 14:00. Days without room for {{count}} people are greyed out.",
+  "We can host up to {{capacity}} people at the same time. On weekdays events can start between 12:00 and 22:00; on weekends they run between 10:00 and 14:00. Days without room for {{count}} people are greyed out.": "We can host up to {{capacity}} people at the same time. On weekdays events can start between 12:00 and 22:00; on weekends they run between 10:00 and 14:00. Days without room for {{count}} people are greyed out.",
   "We need a corporate invoice": "We need a corporate invoice",
   "We would like a game master to teach games": "We would like a game master to teach games",
   "We would like food and drinks": "We would like food and drinks",
