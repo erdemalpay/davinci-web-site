@@ -100,7 +100,7 @@
   "Thank you! We have received your application and sent a confirmation to {{email}}. Our team will review it and let you know by email. Your time is reserved once we approve it.": "Thank you! We have received your application and sent a confirmation to {{email}}. Our team will review it and let you know by email. Your time is reserved once we approve it.",
   "Those hours just filled up. Please choose another time.": "Those hours just filled up. Please choose another time.",
   "Tournament": "Tournament",
-  "We can host up to {{capacity}} people at the same time. On weekdays events can start between 12:00 and 22:00; on weekends they run between 10:00 and 14:00. Days without room for {{count}} people are greyed out.": "We can host up to {{capacity}} people at the same time. On weekdays events can start between 12:00 and 22:00; on weekends they run between 10:00 and 14:00. Days without room for {{count}} people are greyed out.",
+  "We can host up to {{capacity}} people at the same time. On weekdays events can start between 12:00 and 22:00; on weekends they run between 10:00 and 14:00. Days and hours without room for {{count}} people are marked in orange; you can still apply for them.": "We can host up to {{capacity}} people at the same time. On weekdays events can start between 12:00 and 22:00; on weekends they run between 10:00 and 14:00. Days and hours without room for {{count}} people are marked in orange; you can still apply for them.",
   "We need a corporate invoice": "We need a corporate invoice",
   "We would like a game master to teach games": "We would like a game master to teach games",
   "We would like food and drinks": "We would like food and drinks",
@@ -108,5 +108,6 @@
   "What would you like? (e.g. snacks, drinks, cake)": "What would you like? (e.g. snacks, drinks, cake)",
   "Your application could not be sent. Please try again or call us at 0312 286 78 60.": "Your application could not be sent. Please try again or call us at 0312 286 78 60.",
   "{{count}} free": "{{count}} free",
-  "{{count}} people waiting for approval at this hour": "{{count}} people waiting for approval at this hour"
+  "{{count}} people waiting for approval at this hour": "{{count}} people waiting for approval at this hour",
+  "There is not enough room for {{count}} people between {{start}} and {{end}}, so your request may be declined. You can still send it or choose another time.": "There is not enough room for {{count}} people between {{start}} and {{end}}, so your request may be declined. You can still send it or choose another time."
 }
