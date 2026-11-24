@@ -196,15 +196,10 @@ function dayLabel(date: string, locale: string) {
   return { weekday: fmt({ weekday: 'short' }), day: fmt({ day: 'numeric', month: 'short' }) }
 }
 
-// Longest run of hours from `start` that still has room for `count` people.
-function maxEnd(day: DayAvailability, start: string, count: number) {
-  let end = toMin(start)
-  for (const hour of day.hours) {
-    if (toMin(hour.hour) < end) continue
-    if (toMin(hour.hour) !== end || hour.remaining < count) break
-    end += 60
-  }
-  return end
+// Fewest free seats in any hour from start to end.
+function leastFree(day: DayAvailability, start: string, end: string) {
+  const inRange = day.hours.filter((h) => toMin(h.hour) >= toMin(start) && toMin(h.hour) < toMin(end))
+  return inRange.length ? Math.min(...inRange.map((h) => h.remaining)) : Infinity
 }
 
 function TimeStep({
@@ -224,24 +219,24 @@ function TimeStep({
   const locale = i18n.language === 'en' ? 'en-GB' : 'tr-TR'
 
   const days = data?.days ?? []
+  // Full days and hours can still be chosen; they are only marked
   const fits = (day: DayAvailability) => day.hours.some((h) => h.remaining >= count)
   const day = days.find((d) => d.date === date) ?? null
   const endOptions = useMemo(() => {
     if (!day || !start) return []
-    const last = maxEnd(day, start, count)
     const options: string[] = []
-    for (let m = toMin(start) + 60; m <= last; m += 60) options.push(fromMin(m))
+    for (let m = toMin(start) + 60; m <= toMin(day.close); m += 60) options.push(fromMin(m))
     return options
-  }, [day, start, count])
+  }, [day, start])
+  const tooFull = Boolean(day && start && end && leastFree(day, start, end) < count)
 
   const pickStart = (hour: string) => {
     if (!day) return
     setStart(hour)
-    const last = maxEnd(day, hour, count)
     const window = toMin(day.close) - toMin(day.open)
     // Default: the whole weekend window, otherwise 3 hours
     const wanted = toMin(hour) + (window <= 240 ? window : 180)
-    setEnd(fromMin(Math.min(wanted, last)))
+    setEnd(fromMin(Math.min(wanted, toMin(day.close))))
   }
 
   if (isLoading) return <p style={{ color: 'var(--gray-600)' }}>{t('Loading...')}</p>
@@ -250,7 +245,7 @@ function TimeStep({
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
       <p style={{ margin: 0, color: 'var(--gray-700)', fontSize: '0.92rem' }}>
-        {t('We can host up to {{capacity}} people at the same time. On weekdays events can start between 12:00 and 22:00; on weekends they run between 10:00 and 14:00. Days without room for {{count}} people are greyed out.', { capacity: data?.capacity ?? 100, count })}
+        {t('We can host up to {{capacity}} people at the same time. On weekdays events can start between 12:00 and 22:00; on weekends they run between 10:00 and 14:00. Days and hours without room for {{count}} people are marked in orange; you can still apply for them.', { capacity: data?.capacity ?? 100, count })}
       </p>
 
       <div className="ge-days">
@@ -262,14 +257,13 @@ function TimeStep({
             <button
               key={d.date}
               type="button"
-              disabled={!ok}
               onClick={() => { setDate(d.date); setStart(null); setEnd(null) }}
               style={{
                 display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '2px', padding: '8px 4px',
-                borderRadius: '10px', cursor: ok ? 'pointer' : 'not-allowed', fontFamily: 'var(--font-body)',
-                border: selected ? '2px solid var(--red)' : '1px solid var(--gray-300)',
-                background: selected ? 'var(--red-muted)' : ok ? '#fff' : 'var(--gray-100)',
-                color: ok ? 'var(--black)' : 'var(--gray-400)',
+                borderRadius: '10px', cursor: 'pointer', fontFamily: 'var(--font-body)',
+                border: selected ? '2px solid var(--red)' : ok ? '1px solid var(--gray-300)' : '1px solid #F6AD55',
+                background: selected ? 'var(--red-muted)' : ok ? '#fff' : '#FFF7ED',
+                color: 'var(--black)',
               }}
             >
               <span style={{ fontSize: '0.72rem', textTransform: 'uppercase' }}>{weekday}</span>
@@ -290,20 +284,19 @@ function TimeStep({
                 <button
                   key={h.hour}
                   type="button"
-                  disabled={!ok}
                   onClick={() => pickStart(h.hour)}
                   title={h.pending ? t('{{count}} people waiting for approval at this hour', { count: h.pending }) : undefined}
                   style={{
                     padding: '8px 4px', borderRadius: '10px', fontFamily: 'var(--font-body)',
-                    cursor: ok ? 'pointer' : 'not-allowed',
-                    border: inRange ? '2px solid var(--red)' : '1px solid var(--gray-300)',
-                    background: inRange ? 'var(--red-muted)' : ok ? '#fff' : 'var(--gray-100)',
-                    color: ok ? 'var(--black)' : 'var(--gray-400)',
+                    cursor: 'pointer',
+                    border: inRange ? '2px solid var(--red)' : ok ? '1px solid var(--gray-300)' : '1px solid #F6AD55',
+                    background: inRange ? 'var(--red-muted)' : ok ? '#fff' : '#FFF7ED',
+                    color: 'var(--black)',
                     display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '2px',
                   }}
                 >
                   <span style={{ fontWeight: 700 }}>{h.hour}</span>
-                  <span style={{ fontSize: '0.72rem', color: ok ? 'var(--gray-600)' : 'var(--gray-400)' }}>
+                  <span style={{ fontSize: '0.72rem', color: ok ? 'var(--gray-600)' : '#C05621' }}>
                     {t('{{count}} free', { count: h.remaining })}
                   </span>
                 </button>
@@ -320,6 +313,12 @@ function TimeStep({
             </div>
           )}
         </div>
+      )}
+
+      {tooFull && start && end && (
+        <p style={{ margin: 0, padding: '12px 14px', borderRadius: '10px', background: '#FFF7ED', border: '1px solid #F6AD55', color: '#9C4221', fontSize: '0.9rem', lineHeight: 1.5 }}>
+          ⚠️ {t('There is not enough room for {{count}} people between {{start}} and {{end}}, so your request may be declined. You can still send it or choose another time.', { count, start, end })}
+        </p>
       )}
 
       {error && <p style={{ margin: 0, color: 'var(--red)', fontWeight: 600 }}>{error}</p>}
